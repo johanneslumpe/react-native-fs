@@ -110,6 +110,9 @@ type FSInfoResult = {
 	freeSpace: number // The amount of available storage space on the device (in bytes).
 }
 
+type Encoding = 'utf8' | 'base64' | 'ascii';
+type EncodingOrOptions = Encoding | Record<string, any>;
+
 export function mkdir(filepath: string, options?: MkdirOptions): Promise<void>
 export function moveFile(
 	filepath: string,
@@ -178,13 +181,13 @@ export function stat(filepath: string): Promise<StatResult>
 
 export function readFile(
 	filepath: string,
-	encodingOrOptions?: any
+	encodingOrOptions?: EncodingOrOptions
 ): Promise<string>
 export function read(
 	filepath: string,
 	length?: number,
 	position?: number,
-	encodingOrOptions?: any
+	encodingOrOptions?: EncodingOrOptions
 ): Promise<string>
 
 /**
@@ -200,7 +203,7 @@ export function readFileAssets(
  */
 export function readFileRes(
 	filepath: string,
-	encodingOrOptions?: any
+	encodingOrOptions?: EncodingOrOptions
 ): Promise<string>
 
 export function hash(filepath: string, algorithm: string): Promise<string>
@@ -251,20 +254,20 @@ export function copyAssetsVideoIOS(
 export function writeFile(
 	filepath: string,
 	contents: string,
-	encodingOrOptions?: any
+	encodingOrOptions?: EncodingOrOptions
 ): Promise<void>
 
 export function appendFile(
 	filepath: string,
 	contents: string,
-	encodingOrOptions?: string
+	encodingOrOptions?: EncodingOrOptions
 ): Promise<void>
 
 export function write(
 	filepath: string,
 	contents: string,
 	position?: number,
-	encodingOrOptions?: any
+	encodingOrOptions?: EncodingOrOptions
 ): Promise<void>
 
 export function downloadFile(
